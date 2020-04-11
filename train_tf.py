@@ -37,7 +37,7 @@ with open(args.trainfile) as f:
 with open(args.testfile) as f:
     testfiles = f.readlines()
 
-generator = BalanceDataGenerator(trainfiles, datadir=args.datadir, class_weights=[1., 1., 25.])
+generator = BalanceDataGenerator(trainfiles, batch_size=args.bs, datadir=args.datadir, class_weights=[1., 1., 25.])
 
 # Create a dataset tensor from the images and the labels
 '''dataset = tf.data.Dataset.from_generator(lambda: generator,
