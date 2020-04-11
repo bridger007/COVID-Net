@@ -87,9 +87,9 @@ class BalanceDataGenerator(keras.utils.Sequence):
         batch_x, batch_y = np.zeros((self.batch_size, *self.input_shape, self.num_channels)), np.zeros(self.batch_size)
 
         batch_files = self.datasets[0][idx*self.batch_size : (idx+1)*self.batch_size]
-        batch_files[np.random.randint(self.batch_size)] = np.random.choice(self.datasets[1])
+        batch_files[np.random.randint(len(batch_files))] = np.random.choice(self.datasets[1])
 
-        for i in range(self.batch_size):
+        for i in range(len(batch_files)):
             sample = batch_files[i].split()
 
             if self.is_training:
